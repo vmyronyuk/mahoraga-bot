@@ -14,6 +14,7 @@ export const startCommandHandler = async (ctx: Context) => {
 	const { userId, username } = messageInfo
 
 	const newUser: UserDTO = {
+		id: userId.toString(),
 		username: username,
 		balance: 0,
 		profileImage: '',

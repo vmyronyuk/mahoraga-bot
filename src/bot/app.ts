@@ -2,6 +2,7 @@ import dotenv from 'dotenv'
 import { Telegraf } from 'telegraf'
 import { startCommandHandler } from '../controllers/startController'
 import { statsCommandHandler } from '../controllers/statsController'
+import { vsCommandHandler } from '../controllers/vs/vsContoller'
 
 dotenv.config()
 
@@ -16,6 +17,8 @@ const bot = new Telegraf(botToken)
 bot.start(startCommandHandler)
 
 bot.command('stats', statsCommandHandler)
+
+bot.command('vs', vsCommandHandler)
 
 bot
 	.launch()
