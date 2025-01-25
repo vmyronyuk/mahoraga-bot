@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import { Telegraf } from 'telegraf'
+import { startCommandHandler } from '../controllers/startController'
 
 dotenv.config()
 
@@ -11,11 +12,7 @@ if (!botToken) {
 
 const bot = new Telegraf(botToken)
 
-bot.start(async ctx => {
-	const userId = ctx.message.from.id
-	const username = ctx.message.from.username
-	await ctx.reply(`${username} ID ${userId}`)
-})
+bot.start(startCommandHandler)
 
 bot
 	.launch()
