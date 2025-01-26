@@ -26,7 +26,7 @@ export const getRandomDomain = async (userId: string) => {
 		return console.warn('User not found')
 	}
 
-	await updateDoc(userDocRef, { domain: randomDomain })
+	await updateDoc(userDocRef, { domain: randomDomain, isDomainOpened: true })
 
 	return randomDomain
 }

@@ -1,5 +1,6 @@
 import { Context } from 'telegraf'
-import { DomainDTO } from '../../dtos/user.dto'
+import { DomainDTO, UserDTO } from '../../dtos/user.dto'
+import { getUserStats } from '../../firebase/user/getUserStats'
 import { getRandomDomain } from '../../firebase/vs/getRandomDomain'
 import { getMessageInfo } from '../../utils/messageUtils'
 
@@ -11,6 +12,13 @@ export const randomVsCommandHandler = async (ctx: Context) => {
 	}
 
 	const { userId, username } = messageInfo
+
+	const user = (await getUserStats(userId.toString())) as UserDTO
+
+	if (user.isDomainOpened) {
+		await ctx.reply('Територію вже опановували ❌')
+		return
+	}
 
 	const domainResult = (await getRandomDomain(userId.toString())) as DomainDTO
 

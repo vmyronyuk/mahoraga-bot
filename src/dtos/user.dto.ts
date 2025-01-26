@@ -3,6 +3,7 @@ export interface UserDTO {
 	username: string
 
 	domain: DomainDTO
+	isDomainOpened: boolean
 
 	balance: number
 	profileImage: string
