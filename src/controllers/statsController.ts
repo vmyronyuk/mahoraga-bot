@@ -18,12 +18,14 @@ export const statsCommandHandler = async (ctx: Context) => {
 		return ctx.reply(`<b>Статистика не знайдена</b>.`, { parse_mode: 'HTML' })
 	}
 
+	const domainName = userStats.domain?.name || '/randomVs'
+
 	const totalGames = userStats.stats.wins + userStats.stats.loses
 
 	const responseMessage = `
 <b>@${userStats.username}</b>
 ────────────
-⚔️ <b>Територія:</b> ${userStats.domain.name || '/randomVs'}
+⚔️ <b>Територія:</b> ${domainName}
 💰 <b>Баланс:</b> ${userStats.balance} монет
 ────────────
 📊 <b>Статистика:</b>
