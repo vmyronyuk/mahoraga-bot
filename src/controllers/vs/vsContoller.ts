@@ -21,15 +21,18 @@ export const vsCommandHandler = async (ctx: Context) => {
 		if (!currentUser || !targetUser) {
 			return ctx.reply('Не вдалося знайти одного з користувачів.')
 		}
+
+		if (!currentUser.domain.id) {
+			await ctx.reply('Слабака без території ніхто не помічає 😭')
+			return
+		}
+
 		const winner = await calcWinner(currentUser, targetUser)
 
-		await ctx.replyWithAnimation(
-			'https://media1.tenor.com/m/J_g_1B1HK0oAAAAd/koogender.gif',
-			{
-				caption: `🔊 <b> @${username} кидає виклик і @${targetUser.username} приймає! </b>\n\nПереміг - <b>@${winner}</b>`,
-				parse_mode: 'HTML',
-			}
-		)
+		await ctx.replyWithAnimation(`${currentUser.domain.url}`, {
+			caption: `🔊 <b> @${username} кидає виклик і @${targetUser.username} приймає! </b>\n\n${currentUser.domain.message} ${currentUser.domain.name}\n\nПереміг - <b>@${winner}</b>`,
+			parse_mode: 'HTML',
+		})
 	} catch (error) {
 		console.error('Error during vsCommandHandler:', error)
 		return ctx.reply('Сталася помилка при обробці запиту. Спробуйте ще раз.')

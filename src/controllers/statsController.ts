@@ -23,6 +23,7 @@ export const statsCommandHandler = async (ctx: Context) => {
 	const responseMessage = `
 <b>@${userStats.username}</b>
 ────────────
+⚔️ <b>Територія:</b> ${userStats.domain.name}
 💰 <b>Баланс:</b> ${userStats.balance} монет
 ────────────
 📊 <b>Статистика:</b>

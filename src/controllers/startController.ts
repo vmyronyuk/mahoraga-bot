@@ -16,6 +16,7 @@ export const startCommandHandler = async (ctx: Context) => {
 	const newUser: UserDTO = {
 		id: userId.toString(),
 		username: username,
+		domain: { id: '', name: '/randomVs', message: '', url: '' },
 		balance: 0,
 		profileImage: '',
 		inventory: [],
