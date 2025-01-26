@@ -15,6 +15,7 @@ export const getRandomUser = async (
 	}
 
 	const usersRef = collection(db, 'users')
+
 	const querySnapshot = await getDocs(
 		query(usersRef, where('id', '!=', currentUserId))
 	)
