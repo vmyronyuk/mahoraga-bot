@@ -1,4 +1,5 @@
 export interface UserDTO {
+	id: string
 	username: string
 	balance: number
 	profileImage: string

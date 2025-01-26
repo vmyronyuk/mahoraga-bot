@@ -26,6 +26,7 @@ export const statsCommandHandler = async (ctx: Context) => {
 💰 <b>Баланс:</b> ${userStats.balance} монет
 ────────────
 📊 <b>Статистика:</b>
+
 ❇️ <b>Виграші:</b> ${userStats.stats.wins}
 ⛔ <b>Поразки:</b> ${userStats.stats.loses}
 ✖️ <b>Всього ігор:</b> ${totalGames}
