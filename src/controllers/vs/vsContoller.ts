@@ -26,7 +26,7 @@ export const vsCommandHandler = async (ctx: Context) => {
 		await ctx.replyWithAnimation(
 			'https://media1.tenor.com/m/J_g_1B1HK0oAAAAd/koogender.gif',
 			{
-				caption: `🔊 <b> @${username} кидає виклик і @${targetUser.username} приймає! </b>\n\n<b>@${winner}\nGambare gambare...</b>`,
+				caption: `🔊 <b> @${username} кидає виклик і @${targetUser.username} приймає! </b>\n\nПереміг - <b>@${winner}</b>`,
 				parse_mode: 'HTML',
 			}
 		)
