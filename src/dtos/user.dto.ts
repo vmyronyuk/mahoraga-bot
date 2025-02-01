@@ -6,6 +6,8 @@ export interface UserDTO {
 	isDomainOpened: boolean
 
 	balance: number
+	energy: number
+
 	profileImage: string
 
 	inventory: InventoryItemDTO[]

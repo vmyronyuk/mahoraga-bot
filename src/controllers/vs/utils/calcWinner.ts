@@ -6,7 +6,7 @@ export const calcWinner = async (user: UserDTO, targetUser: UserDTO) => {
 	const winner = isUserWinner ? user : targetUser
 	const loser = isUserWinner ? targetUser : user
 
-	await updateVsResult(winner.id, loser.id)
+	await updateVsResult(winner.id, loser.id, user.id)
 
 	return winner.username
 }
