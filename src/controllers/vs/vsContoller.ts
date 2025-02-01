@@ -27,6 +27,11 @@ export const vsCommandHandler = async (ctx: Context) => {
 			return
 		}
 
+		if (currentUser.energy - 4 < 0) {
+			await ctx.reply('Недостатньо енергії для виклику ⚡️❌')
+			return
+		}
+
 		const winner = await calcWinner(currentUser, targetUser)
 
 		await ctx.replyWithAnimation(`${currentUser.domain.url}`, {

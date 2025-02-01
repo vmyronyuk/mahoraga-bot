@@ -13,19 +13,20 @@ export const startCommandHandler = async (ctx: Context) => {
 
 	const { userId, username } = messageInfo
 
-	const newUser: UserDTO = {
+	const newUser = {
 		id: userId.toString(),
 		username: username,
 		domain: { id: '', name: '/randomVs', message: '', url: '' },
 		isDomainOpened: false,
 		balance: 0,
+		energy: 20,
 		profileImage: '',
 		inventory: [],
 		stats: {
 			wins: 0,
 			loses: 0,
 		},
-	}
+	} satisfies UserDTO
 
 	const userRef = doc(db, 'users', userId.toString())
 	const docSnap = await getDoc(userRef)

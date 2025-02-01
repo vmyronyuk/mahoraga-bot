@@ -9,10 +9,15 @@ import { db } from '../config'
 
 let cachedTotalCoins: number | null = null
 
-export const updateVsResult = async (winnerId: string, loserId: string) => {
+export const updateVsResult = async (
+	winnerId: string,
+	loserId: string,
+	userId: string
+) => {
 	const usersRef = collection(db, 'users')
 	const winnerRef = doc(db, 'users', winnerId)
 	const loserRef = doc(db, 'users', loserId)
+	const userRef = doc(db, 'users', userId)
 
 	if (cachedTotalCoins === null) {
 		const querySnapshot = await getDocs(usersRef)
@@ -37,5 +42,6 @@ export const updateVsResult = async (winnerId: string, loserId: string) => {
 			balance: increment(totalReward),
 		}),
 		updateDoc(loserRef, { 'stats.loses': increment(1) }),
+		updateDoc(userRef, { energy: increment(-4) }),
 	])
 }
