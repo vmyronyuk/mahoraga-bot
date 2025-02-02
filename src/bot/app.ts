@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import { Telegraf } from 'telegraf'
+import { dailyCommandHandler } from '../controllers/dailyController'
 import { payCommandHandler } from '../controllers/payContoller'
 import { startCommandHandler } from '../controllers/startController'
 import { statsCommandHandler } from '../controllers/statsController'
@@ -20,6 +21,7 @@ bot.start(startCommandHandler)
 
 bot.command('stats', statsCommandHandler)
 bot.command('pay', payCommandHandler)
+bot.command('daily', dailyCommandHandler)
 
 bot.command('vs', vsCommandHandler)
 bot.command('randomVs', randomVsCommandHandler)

@@ -1,10 +1,5 @@
-import {
-	collection,
-	doc,
-	getDocs,
-	increment,
-	updateDoc,
-} from 'firebase/firestore'
+import { doc, increment, updateDoc } from 'firebase/firestore'
+import { getTotalCoins } from '../admin/serverStats'
 import { db } from '../config'
 
 let cachedTotalCoins: number | null = null
@@ -14,21 +9,12 @@ export const updateVsResult = async (
 	loserId: string,
 	userId: string
 ) => {
-	const usersRef = collection(db, 'users')
 	const winnerRef = doc(db, 'users', winnerId)
 	const loserRef = doc(db, 'users', loserId)
 	const userRef = doc(db, 'users', userId)
 
 	if (cachedTotalCoins === null) {
-		const querySnapshot = await getDocs(usersRef)
-
-		let totalCoins = 0
-		querySnapshot.forEach(doc => {
-			const userData = doc.data()
-			totalCoins += userData?.balance || 0
-		})
-
-		cachedTotalCoins = totalCoins
+		cachedTotalCoins = await getTotalCoins()
 	}
 
 	const baseReward = 25
