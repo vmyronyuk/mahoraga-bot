@@ -5,6 +5,7 @@ export const updateDaily = async (
 	userId: string,
 	coins: number,
 	energy: number,
+	exp: number,
 	date: string | null
 ) => {
 	const userRef = doc(db, 'users', userId)
@@ -12,6 +13,7 @@ export const updateDaily = async (
 	await updateDoc(userRef, {
 		balance: increment(coins),
 		energy: increment(energy),
+		'stats.exp': increment(exp),
 		lastDailyClaim: date,
 	})
 }

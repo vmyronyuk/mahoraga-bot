@@ -25,9 +25,13 @@ export const updateVsResult = async (
 	await Promise.all([
 		updateDoc(winnerRef, {
 			'stats.wins': increment(1),
+			'stats.exp': increment(25),
 			balance: increment(totalReward),
 		}),
-		updateDoc(loserRef, { 'stats.loses': increment(1) }),
+		updateDoc(loserRef, {
+			'stats.loses': increment(1),
+			'stats.exp': increment(-5),
+		}),
 		updateDoc(userRef, { energy: increment(-4) }),
 	])
 }

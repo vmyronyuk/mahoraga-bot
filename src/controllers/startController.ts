@@ -16,7 +16,7 @@ export const startCommandHandler = async (ctx: Context) => {
 	const newUser = {
 		id: userId.toString(),
 		username: username,
-		domain: { id: '', name: '/randomVs', message: '', url: '' },
+		domain: { id: '', name: '/randomVs', message: '', url: '', grade: '4 🔵' },
 		isDomainOpened: false,
 		balance: 0,
 		energy: 20,
@@ -25,6 +25,7 @@ export const startCommandHandler = async (ctx: Context) => {
 		stats: {
 			wins: 0,
 			loses: 0,
+			exp: 0,
 		},
 		lastDailyClaim: null,
 	} satisfies UserDTO
