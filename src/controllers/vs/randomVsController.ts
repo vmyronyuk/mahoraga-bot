@@ -16,13 +16,13 @@ export const randomVsCommandHandler = async (ctx: Context) => {
 	const user = (await getUserStats(userId.toString())) as UserDTO
 
 	if (user.isDomainOpened) {
-		await ctx.reply('Територію вже опановували ❌')
+		await ctx.reply('Ти вже опановував техніку ❌')
 		return
 	}
 
 	const domainResult = (await getRandomDomain(userId.toString())) as DomainDTO
 
-	const domainMessage = `<b> @${username} </b> успішно опановує територію <b>${domainResult.name}</b>! ⚡️`
+	const domainMessage = `<b> @${username} </b> успішно опановує техніку <b>${domainResult.name}</b>! ⚡️`
 
 	return ctx.replyWithAnimation(`${domainResult.url}`, {
 		caption: domainMessage,

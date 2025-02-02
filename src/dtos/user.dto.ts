@@ -1,3 +1,5 @@
+import { PlayerGrade } from '../types/domain'
+
 export interface UserDTO {
 	id: string
 	username: string
@@ -25,6 +27,7 @@ export interface InventoryItemDTO {
 export interface StatDTO {
 	wins: number
 	loses: number
+	exp: number
 }
 
 export interface DomainDTO {
@@ -32,4 +35,5 @@ export interface DomainDTO {
 	name: string
 	message: string
 	url: string
+	grade: PlayerGrade
 }

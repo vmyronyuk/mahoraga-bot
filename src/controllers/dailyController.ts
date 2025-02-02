@@ -49,15 +49,18 @@ export const dailyCommandHandler = async (ctx: Context) => {
 
 	const energyBonus = Math.floor(Math.random() * (12 - 2 + 1)) + 2
 
+	const expBonus = Math.floor(Math.random() * (50 - 1 + 1)) + 1
+
 	await updateDaily(
 		userId.toString(),
 		finalCoinBonus,
 		energyBonus,
+		expBonus,
 		dayjs().format('YYYY-MM-DD')
 	)
 
 	await ctx.reply(
-		`<b> @${username} </b> відкриває щоденний бокс і отримує 📦:\n • ${finalCoinBonus} монет 🪙\n • ${energyBonus} енергії ⚡️`,
+		`<b> @${username} </b> відкриває щоденний бокс і отримує 📦:\n • ${finalCoinBonus} монет 🪙\n • ${energyBonus} енергії ⚡️\n • ${expBonus} exp ⭐️`,
 		{ parse_mode: 'HTML' }
 	)
 }
