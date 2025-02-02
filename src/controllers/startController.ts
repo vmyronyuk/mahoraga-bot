@@ -26,6 +26,7 @@ export const startCommandHandler = async (ctx: Context) => {
 			wins: 0,
 			loses: 0,
 		},
+		lastDailyClaim: null,
 	} satisfies UserDTO
 
 	const userRef = doc(db, 'users', userId.toString())

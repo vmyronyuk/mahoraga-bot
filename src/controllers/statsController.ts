@@ -32,6 +32,7 @@ export const statsCommandHandler = async (ctx: Context) => {
 			wins: 0,
 			loses: 0,
 		},
+		lastDailyClaim: null,
 	} satisfies UserDTO
 
 	const domainName = userStats.domain?.name || '/randomVs'

@@ -12,6 +12,8 @@ export interface UserDTO {
 
 	inventory: InventoryItemDTO[]
 	stats: StatDTO
+
+	lastDailyClaim: string | null
 }
 
 export interface InventoryItemDTO {
